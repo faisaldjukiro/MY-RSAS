@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".view.MainActivity">
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -55,7 +60,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="16dp"
                     android:layout_weight="1"
-                    android:text="SIMRS"
+                    android:text="MY RSAS"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -90,12 +95,21 @@
                     android:padding="12dp">
 
                     <TextView
+                        android:id="@+id/kd_peg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="Dr Jefri Mustafa"
                         android:textColor="@color/white"
-                        android:textSize="12sp"
+                        android:visibility="gone"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/nama_lengkap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -117,22 +131,23 @@
                             android:layout_weight="1">
 
                             <TextView
-                                android:id="@+id/rp"
+                                android:id="@+id/jasajumlah"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginEnd="5dp"
-                                android:text="Rp"
+                                android:textStyle="bold"
                                 android:textColor="@color/white"
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/rp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
-                                android:layout_toEndOf="@id/rp"
-                                android:text="18.323.342"
+                                android:layout_toEndOf="@id/jasajumlah"
+                                android:text=""
                                 android:textColor="@color/white"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
@@ -285,5 +300,6 @@
         android:layout_height="0dp"
         android:layout_gravity="bottom"
         app:backgroundTint="#00FFFFFF" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

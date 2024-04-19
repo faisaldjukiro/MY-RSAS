@@ -51,7 +51,6 @@ public class BuatpassActivity extends AppCompatActivity {
                 String newPassword = password1.getText().toString();
                 String repeatPassword = password2.getText().toString();
 
-                // Periksa apakah password sama dengan repeat password
                 if (!newPassword.equals(repeatPassword)) {
                     showToast("Password tidak cocok");
                     return;
@@ -61,8 +60,6 @@ public class BuatpassActivity extends AppCompatActivity {
                     showToast("Harap isi kedua password.");
                     return;
                 }
-
-                // Periksa apakah kedua password sama
                 if (!newPassword.equals(repeatPassword)) {
                     showToast("Password tidak cocok. Silakan masukkan password yang sama.");
                     return;
@@ -83,18 +80,14 @@ public class BuatpassActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     UpdatePasswordResponse updateResponse = response.body();
                     showToast(updateResponse.getMessage());
-
-                    // Pindah ke halaman login setelah berhasil memperbarui password
                     goToLoginPage();
                 } else {
-                    // Tanggapi jika terjadi kesalahan
                     showToast("Gagal memperbarui password. Silakan coba lagi.");
                 }
             }
 
             @Override
             public void onFailure(Call<UpdatePasswordResponse> call, Throwable t) {
-                // Tanggapi jika terjadi kegagalan koneksi
                 progressBar.setVisibility(View.GONE);
                 showToast("Koneksi gagal. Silakan cek koneksi internet Anda.");
             }
@@ -104,10 +97,14 @@ public class BuatpassActivity extends AppCompatActivity {
     private void goToLoginPage() {
         Intent intent = new Intent(BuatpassActivity.this, LoginActivity.class);
         startActivity(intent);
-        finish(); // Selesaikan activity saat ini agar pengguna tidak dapat kembali ke halaman ini dengan tombol back
+        finish();
     }
 
     private void showToast(String message) {
         Toast.makeText(BuatpassActivity.this, message, Toast.LENGTH_SHORT).show();
+    }
+    public void lihatButtonClicked(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 }

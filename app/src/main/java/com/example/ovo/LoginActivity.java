@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.ovo.api.ApiService;
 import com.example.ovo.api.LoginResponse;
 import com.example.ovo.api.RetrofitInstance;
-import com.example.ovo.view.LottieActivity;
+import com.example.ovo.view.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,7 +34,6 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private SharedPreferences sharedPref;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +41,10 @@ public class LoginActivity extends AppCompatActivity {
 
         sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
+        if (isLoggedIn()) {
+            startMainActivity();
+            finish();
+        }
         apiService = RetrofitInstance.getRetrofitInstance().create(ApiService.class);
 
         usernameEditText = findViewById(R.id.usernameEditText);
@@ -54,16 +57,16 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
+
+                if (username.isEmpty() || password.isEmpty()) {
+                    showToast("Username dan password harus diisi");
+                    return;
+                }
+
                 login(username, password);
             }
         });
-
-        // Check if user is already logged in
-        if (isLoggedIn()) {
-            startNextActivity();
-        }
     }
-
     private void login(String username, String password) {
         progressBar.setVisibility(View.VISIBLE);
         Call<LoginResponse> call = apiService.login(username, password);
@@ -72,55 +75,59 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 progressBar.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
-                    // Save login status
-                    saveLoginStatus(true);
                     LoginResponse loginResponse = response.body();
-                    String message = loginResponse.getUserData().getNama();
-                    showToast(message);
-                    startNextActivity();
+                    String kd_peg = loginResponse.getUserData().getKd_peg();
+                    String token = loginResponse.getToken();
+                    String namalengkap = loginResponse.getUserData().getNama();
+                    showToast(namalengkap + " " +  "Login berhasil");
+                    saveLoginData(kd_peg, token, namalengkap);
+                    startMainActivity();
                 } else {
                     if (response.errorBody() != null) {
                         try {
                             JSONObject errorResponse = new JSONObject(response.errorBody().string());
-                            String status = errorResponse.getString("status");
-                            if (status.equals("error")) {
-                                String errorMessage = errorResponse.getString("message");
-                                showToast(errorMessage);
-                            }
+                            String errorMessage = errorResponse.optString("message", "Terjadi kesalahan");
+                            showToast(errorMessage);
                         } catch (JSONException | IOException e) {
                             e.printStackTrace();
                         }
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
-                showToast("Login failed");
+                showToast("Login gagal. Periksa koneksi internet Anda.");
                 Log.e("LoginActivity", "Login failed", t);
             }
         });
     }
-
     private void showToast(String message) {
         Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 
-    private void startNextActivity() {
-        Intent intent = new Intent(LoginActivity.this, LottieActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    private void saveLoginStatus(boolean isLoggedIn) {
+    private void saveLoginData(String kd_peg, String token, String namalengkap) {
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean(getString(R.string.login_status_key), isLoggedIn);
+        editor.putBoolean(getString(R.string.login_status_key), true);
+        editor.putString(getString(R.string.kd_peg_key), kd_peg);
+        editor.putString(getString(R.string.token_key), token);
+        editor.putString(getString(R.string.nama_lengkap_key), namalengkap);
         editor.apply();
     }
 
     private boolean isLoggedIn() {
         return sharedPref.getBoolean(getString(R.string.login_status_key), false);
+    }
+
+    private void startMainActivity() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        String kd_peg = sharedPref.getString(getString(R.string.kd_peg_key), "");
+        String token = sharedPref.getString(getString(R.string.token_key), "");
+        String nama_lengkap = sharedPref.getString(getString(R.string.nama_lengkap_key), "");
+        intent.putExtra("kd_peg", kd_peg);
+        intent.putExtra("token", token);
+        intent.putExtra("nama", nama_lengkap);
+        startActivity(intent);
     }
 
     public void lihatButtonClicked(View view) {

@@ -112,7 +112,7 @@
         android:textSize="14sp"
         android:textAlignment="center"
         android:id="@+id/login"
-        android:onClick="login"
+        android:onClick="lihatButtonClicked"
         android:textColor="@color/purple"
         android:layout_marginBottom="20dp"/>
 </LinearLayout>

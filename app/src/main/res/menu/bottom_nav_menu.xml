@@ -9,10 +9,10 @@
         android:title="Beranda" />
 
     <item
-        android:id="@+id/Search"
+        android:id="@+id/cari"
         android:icon="@drawable/baseline_blur_circular_24"
         app:actionLayout="@layout/menu_item"
-        android:title="Tidak" />
+        android:title="Cari" />
 
     <item
         android:id="@+id/placeholder"
@@ -26,7 +26,7 @@
         android:title="Pesan" />
 
     <item
-        android:id="@+id/Settings"
+        android:id="@+id/setings"
         android:icon="@drawable/baseline_blur_circular_24"
         app:actionLayout="@layout/menu_item"
         android:title="Profile" />
