@@ -1,0 +1,219 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    tools:context=".RincianDokterActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_background"
+        android:padding="10dp"
+        android:id="@+id/toolbar">
+
+        <TextView
+            android:id="@+id/nama_pegawai"
+            android:layout_width="401dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="9dp"
+            android:layout_marginLeft="-33dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/back_btn"
+            android:gravity="center"
+            android:text="nama lengkap"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/icon_back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/white"
+            android:layout_centerVertical="true"
+            android:id="@+id/back_btn"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/search_user_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp">
+
+        <EditText
+            android:id="@+id/seach_username_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toLeftOf="@id/search_user_btn"
+            android:background="@drawable/edit_text_rounded_corner"
+            android:elevation="4dp"
+            android:hint="Cari"
+            android:padding="10dp"
+            android:textColor="@color/black" />
+
+        <ImageButton
+            android:id="@+id/search_user_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="4dp"
+            android:src="@drawable/icon_search"
+            app:tint="@color/Primary" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_below="@id/search_user_layout">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_height="wrap_content">
+
+            <TableLayout
+                android:id="@+id/table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:background="@android:color/white">
+
+                <TableRow
+                    android:background="@color/colorPrimary">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kol1"
+                        android:textColor="@color/white"
+                        android:padding="10sp"
+                        android:textSize="15sp"
+                        android:gravity="center_horizontal" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kol2"
+                        android:textColor="@color/white"
+                        android:padding="10sp"
+                        android:textSize="15sp"
+
+                        android:gravity="center_horizontal" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kol3"
+                        android:textColor="@color/white"
+                        android:padding="10sp"
+                        android:textSize="15sp"
+
+                        android:gravity="center_horizontal" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kol4"
+                        android:textColor="@color/white"
+                        android:padding="10sp"
+                        android:textSize="15sp"
+                        android:gravity="center_horizontal" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kol5"
+                        android:textColor="@color/white"
+                        android:padding="10sp"
+                        android:textSize="15sp"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:id="@+id/kasus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:padding="10sp"
+                        android:textSize="14sp"
+                        android:layout_weight="4"
+                         />
+
+                    <TextView
+                        android:id="@+id/pasien"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:padding="10sp"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:layout_weight="4"
+                         />
+
+                    <TextView
+                        android:id="@+id/tindakan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:padding="10sp"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:layout_weight="4"
+                        />
+
+                    <TextView
+                        android:id="@+id/jasa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:padding="10sp"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:layout_weight="4"
+                         />
+
+                    <TextView
+                        android:id="@+id/klem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:textColor="@color/black"
+                        android:padding="10sp"
+                        android:textSize="14sp"
+                        android:layout_weight="4"
+                        />
+                </TableRow>
+
+
+            </TableLayout>
+        </HorizontalScrollView>
+    </ScrollView>
+
+</RelativeLayout>
