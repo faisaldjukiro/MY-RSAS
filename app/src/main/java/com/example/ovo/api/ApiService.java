@@ -26,13 +26,25 @@ public interface ApiService {
             @Field("password") String password
     );
 
-//    @Headers({
-//            "Content-Type: application/json"
-//    })
     @FormUrlEncoded
     @POST("jasasatu.php")
     Call<JasaSatuResponse> getData(
             @Header("token") String token,
             @Field("kd_peg") String kdPeg
+    );
+
+    @FormUrlEncoded
+    @POST("jasa.php")
+    Call<JasaListResponse> getList(
+            @Header("token") String token,
+            @Field("kd_peg") String kdPeg
+    );
+
+    @FormUrlEncoded
+    @POST("jasa_rinci_dokter.php")
+    Call<DokterResponse> getData(
+            @Header("token") String token,
+            @Field("kd_peg") String kdPeg,
+            @Field("blnthn") String blnThn
     );
 }

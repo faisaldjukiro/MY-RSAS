@@ -31,7 +31,7 @@ public class JasaSatuResponse {
 
     public class DataModel {
         private String jumlah;
-
+        private String blnthn;
         public String getJumlah() {
             return jumlah;
         }
@@ -39,6 +39,16 @@ public class JasaSatuResponse {
         public void setJumlah(String jumlah) {
             this.jumlah = jumlah;
         }
+
+        public String getBlnthn() {
+            return blnthn;
+        }
+
+        public void setBlnthn(String blnthn) {
+            this.blnthn = blnthn;
+        }
+
+
     }
 }
 

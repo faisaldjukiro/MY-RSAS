@@ -7,4 +7,15 @@
     <string name="kd_peg_key">kd_peg</string>
     <string name="token_key">token</string>
     <string name="nama_lengkap_key">nama_lengkap</string>
+
+
+
+    <string name="kol1">Kasus</string>
+    <string name="kol2">Pasien</string>
+    <string name="kol3">Tindakan</string>
+    <string name="kol4">Jasa</string>
+    <string name="kol5">Klem</string>
+
+
+
 </resources>

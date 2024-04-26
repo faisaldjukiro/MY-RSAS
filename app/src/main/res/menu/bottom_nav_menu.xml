@@ -4,15 +4,15 @@
 
     <item
         android:id="@+id/home"
-        android:icon="@drawable/baseline_blur_circular_24"
+        android:icon="@drawable/beranda"
         app:actionLayout="@layout/menu_item"
         android:title="Beranda" />
 
     <item
         android:id="@+id/cari"
-        android:icon="@drawable/baseline_blur_circular_24"
+        android:icon="@drawable/money"
         app:actionLayout="@layout/menu_item"
-        android:title="Cari" />
+        android:title="Jasa" />
 
     <item
         android:id="@+id/placeholder"
@@ -20,14 +20,14 @@
         android:title="Scan" />
 
     <item
-        android:id="@+id/profile"
+        android:id="@+id/setings"
         android:icon="@drawable/baseline_blur_circular_24"
         app:actionLayout="@layout/menu_item"
         android:title="Pesan" />
 
     <item
-        android:id="@+id/setings"
-        android:icon="@drawable/baseline_blur_circular_24"
+        android:id="@+id/profile"
+        android:icon="@drawable/icon_akun"
         app:actionLayout="@layout/menu_item"
         android:title="Profile" />
 
